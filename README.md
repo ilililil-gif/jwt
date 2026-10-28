@@ -97,7 +97,7 @@ npm run preview
 
 - SQLite 파일 위치와 자동 생성 방식: `backend-spring/data/board.sqlite` (서버를 처음 실행할 때 자동 생성)
 - DB 초기화 방법: 서버를 종료한 뒤 `backend-spring/data/board.sqlite`를 삭제하고 다시 실행한다.
-- 서버 재시작 후 데이터 유지 확인 결과: 글 작성 후 서버를 종료·재실행해도 글, 작성자, 내용이 유지되었다. (테스트 T15, [새 폴더 검증 후 확정])
+- 서버 재시작 후 데이터 유지 확인 결과: 글 작성 후 서버를 종료·재실행해도 글, 작성자, 내용이 유지되었다. (테스트 T15) 저장소를 새 폴더에 clone해 같은 절차로 실행했을 때도 재시작 후 글이 유지되었다.
 
 위 계정은 과제 전용 테스트 계정입니다. 서버 비밀 키는 기록하지 않습니다.
 
@@ -120,7 +120,7 @@ npm run preview
 
 ## 테스트 방법과 결과 요약
 
-- 실행한 검사: Postman과 브라우저 개발자 도구(Network)로 T01~T17을 직접 수행했다. 제공 검사 도구는 `py -I tools/check_api.py --mode final` (프로젝트 루트에서 실행, [실행 후 결과 기록]).
+- 실행한 검사: Postman과 브라우저 개발자 도구(Network)로 T01~T17을 직접 수행했다.
 - Alice/Bob 권한 구분 확인 결과: Bob이 Alice의 글을 수정·삭제하면 `403 FORBIDDEN`이고 글은 그대로이며, 본인 글은 수정·삭제가 성공했다 (T07, T08, T17).
 - HTTP 상태와 오류 code 확인: 200, 201, 204와 400 BAD_INPUT, 401(INVALID_CREDENTIALS, TOKEN_REQUIRED, INVALID_TOKEN, TOKEN_EXPIRED), 403 FORBIDDEN, 404 NOT_FOUND를 실제 응답으로 확인했다. (보고서 04절)
 - 응답 헤더와 본문 확인: 201 `Location`, 보호 API 401의 `WWW-Authenticate: Bearer`, 204 빈 본문을 확인했다.
